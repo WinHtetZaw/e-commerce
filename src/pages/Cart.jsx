@@ -16,7 +16,7 @@ import {
 
 // components
 import BackBtn from "../components/BackBtn";
-import AddNewBtn from "../components/addNewBtn";
+import AddNewBtn from "../components/AddNewBtn";
 import RemoveAllBtn from "../components/RemoveAllBtn";
 
 const Cart = () => {
