@@ -24,6 +24,7 @@ import {
 
 // * alert notification
 import { toast } from "react-hot-toast";
+import { getLocalStorage } from "../helper/helper";
 
 const ProductCard = (props) => {
   const { id, title, thumbnail, description, category, rating, price } = props;
@@ -34,6 +35,8 @@ const ProductCard = (props) => {
   const { isLogin } = useSelector((state) => state.generalSlice);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const authUser = getLocalStorage("auth-user");
 
   // * get cart lists info from local storage
   const currentProduct = JSON.parse(
@@ -49,6 +52,10 @@ const ProductCard = (props) => {
     (el) => el.currentProductId == id
   );
 
+  // const isCurrentProduct = getLocalStorage("storedCart")?.currentProduct?.find(
+  //   (el) => el.currentProductId == id
+  // );
+
   const currentFavoriteProduct = storedFavorite?.find((el) => el.id == id);
 
   const UAI = JSON.parse(localStorage.getItem("shopcart-UAI"));
@@ -57,7 +64,10 @@ const ProductCard = (props) => {
     if (currentFavoriteProduct) {
       setIsFavorite(true);
     }
-  }, []);
+    if (isCurrentProduct) {
+      setIsAdded(true);
+    }
+  }, [currentFavoriteProduct,isCurrentProduct]);
 
   // const current = storedFavorite?.find((el) => el.id === id);
 
@@ -65,7 +75,7 @@ const ProductCard = (props) => {
   const handleAddToCartClick = (e, product) => {
     e.stopPropagation();
 
-    if (!UAI.auth || !isLogin) {
+    if (!isLogin) {
       toast.error("Need an account for this action!");
       return;
     }
@@ -77,7 +87,7 @@ const ProductCard = (props) => {
   const handleRemoveFromCartClick = (e, product) => {
     e.stopPropagation();
 
-    if (!UAI.auth || !isLogin) {
+    if (!isLogin) {
       toast.error("Need an account for this action!");
       return;
     }
@@ -90,7 +100,7 @@ const ProductCard = (props) => {
   const handleAddFavoriteClick = (e, product) => {
     e.stopPropagation();
 
-    if (!UAI.auth || !isLogin) {
+    if (!isLogin) {
       toast.error("Need an account for this action!");
       return;
     }
@@ -103,7 +113,7 @@ const ProductCard = (props) => {
   const handleRemoveFavoriteClick = (e, product) => {
     e.stopPropagation();
 
-    if (!UAI.auth || !isLogin) {
+    if (!isLogin) {
       toast.error("Need an account for this action!");
       return;
     }
@@ -120,7 +130,7 @@ const ProductCard = (props) => {
     >
       {/* favorite icon  */}
       <div className=" absolute z-10 top-2 right-2 bg-white p-1 rounded-full">
-        {currentFavoriteProduct ? (
+        {currentFavoriteProduct && authUser ? (
           <AiFillHeart
             onClick={(e) => handleRemoveFavoriteClick(e, props)}
             className="text-red-500"

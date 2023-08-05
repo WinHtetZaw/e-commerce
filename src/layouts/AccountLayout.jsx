@@ -2,19 +2,24 @@ import { Navigate, Outlet, useLocation } from "react-router-dom";
 import Aside from "../account/Aside";
 import { useState } from "react";
 import { UAI } from "../helper/helper";
+import { useSelector } from "react-redux";
+import { toast } from "react-hot-toast";
 
 const AccountLayout = () => {
   // * hooks
   const [isOpened, setIsOpened] = useState(false);
-  const location = useLocation()
+  const location = useLocation();
 
-  if (!UAI || !UAI.auth) {
-    return (
-      <>
-        <div className="">apple</div>
-      </>
-    );
-  }
+  const { isLogin } = useSelector((state) => state.generalSlice);
+
+  // if (!isLogin) {
+  //   return (
+  //     <>
+  //       {toast.error("Need an account for this action!")}
+  //       <Navigate to={"/products"} replace />
+  //     </>
+  //   );
+  // }
 
   return (
     <div className="flex gap-7 w-full min-h-[85vh] bg-gray-100">

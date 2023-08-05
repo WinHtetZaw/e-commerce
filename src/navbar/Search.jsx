@@ -10,7 +10,8 @@ import { useGetProductsBySkipAndLimitQuery } from "../redux/services/productApi"
 // * react router dom
 import { useNavigate } from "react-router-dom";
 
-const Search = () => {
+const Search = (props) => {
+  const { setIsOpened = () => {} } = props;
   // * hooks
   const [searchQuery, setSearchQuery] = useState("");
   const { data, isLoading, isSuccess } = useGetProductsBySkipAndLimitQuery({
@@ -22,11 +23,12 @@ const Search = () => {
   // * handles
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    setIsOpened(false);
     navigate({
       pathname: "/products/search",
       search: `?q=${searchQuery}`,
     });
-    // console.log("search ---> ", searchQuery);
   };
 
   const handleInputChange = (e) => {

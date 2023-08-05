@@ -1,4 +1,3 @@
-import { AiOutlineExclamationCircle } from "react-icons/ai";
 
 // * local storage
 export let shopcartUai;

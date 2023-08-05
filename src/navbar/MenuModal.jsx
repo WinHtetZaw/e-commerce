@@ -10,18 +10,30 @@ import { GoPerson } from "react-icons/go";
 import { Link, useNavigate } from "react-router-dom";
 
 // * components
-import { shopcartUai } from "../helper/helper";
+import { setUaiToStorage, shopcartUai } from "../helper/helper";
 import Search from "./Search";
+import { useDispatch, useSelector } from "react-redux";
+import { setIsLogin } from "../redux/features/generalSlice";
+import { toast } from "react-hot-toast";
 
 const MenuModal = () => {
   // * hooks
   const [isOpened, setIsOpened] = useState(false);
+  const { isLogin } = useSelector((state) => state.generalSlice);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   // * handles
   const handleProfileClick = () => {
     setIsOpened(false);
     navigate("/account");
+  };
+
+  const handleLogoutClick = () => {
+    dispatch(setIsLogin(false));
+    shopcartUai.auth = false;
+    setUaiToStorage(shopcartUai);
+    toast.success("Successfully log out!");
   };
 
   return (
@@ -51,21 +63,23 @@ const MenuModal = () => {
                 <GoPerson className=" text-xl " />
               </div>
 
-              {/* log in & log out  */}
-              {shopcartUai?.token ? (
-                <p className=" capitalize select-none cursor-pointer">
+              {isLogin ? (
+                <p
+                  onClick={handleLogoutClick}
+                  className="capitalize select-none cursor-pointer"
+                >
                   Log out
                 </p>
               ) : (
                 <Link to={"/log-in"}>
-                  <p className=" capitalize select-none cursor-pointer">
+                  <p className="capitalize select-none cursor-pointer">
                     Log in
                   </p>
                 </Link>
               )}
 
               {/* search  */}
-              <Search />
+              <Search setIsOpened={setIsOpened} isOpened={isOpened} />
             </div>
           </div>
         </section>

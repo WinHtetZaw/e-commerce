@@ -42,7 +42,7 @@ const router = createBrowserRouter(
       <Route path="password-recovery" element={<ForgotPw />} />
 
       <Route path="/" element={<RootLayout />} errorElement={<NotFound />}>
-        <Route index element={<Home />} breadcrumb="apple" />
+        <Route index element={<Home />} />
 
         <Route
           path="account"

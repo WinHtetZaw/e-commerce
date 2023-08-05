@@ -5,7 +5,6 @@ import ProductCard from "../components/ProductCard";
 const SearchPage = () => {
   const [searchQuery, setSearchQuery] = useSearchParams();
   const { data } = useSearchProductsQuery(searchQuery.get("q"));
-  console.log(data);
 
   const looping = data?.products?.map((product, index) => (
     <div key={index}>
@@ -21,5 +20,6 @@ const SearchPage = () => {
     </>
   );
 };
+
 
 export default SearchPage;

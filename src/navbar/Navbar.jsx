@@ -1,8 +1,5 @@
 // * icons
 import { GiShoppingCart } from "react-icons/gi";
-import { IoIosArrowDown } from "react-icons/io";
-import { HiOutlineMenuAlt3 } from "react-icons/hi";
-import { GoSearch, GoPerson } from "react-icons/go";
 import { FiShoppingCart } from "react-icons/fi";
 
 // * react router dom
@@ -18,21 +15,26 @@ import Profile from "./Profile";
 import Breadcrumb from "./Breadcrumb";
 import MenuModal from "./MenuModal";
 
+// * helper
+import { getLocalStorage } from "../helper/helper";
+
+// * alert notification
+import { toast } from "react-hot-toast";
+
 const Navbar = () => {
-  const { cartProducts } = useSelector((state) => state.cartSlice);
+  const { isLogin } = useSelector((state) => state.generalSlice);
   const navigate = useNavigate();
 
-  // let storedCart;
-  // if (JSON.parse(localStorage.getItem("storedCart"))?.products.length > 0) {
-  //   storedCart = JSON.parse(localStorage.getItem("storedCart"));
-  // }
+  const currentProduct = getLocalStorage("storedCart")?.products;
 
-  const currentProduct = JSON.parse(
-    localStorage.getItem("storedCart")
-  )?.products;
-  // console.log("storedCart ----", storedCart);
-
-  // storedCart = JSON.parse(localStorage.getItem("storedCart"))
+  // * handles
+  const handleCartClick = () => {
+    if (isLogin) {
+      navigate("/cart");
+    } else {
+      toast.error("Need an account for this action!");
+    }
+  };
 
   return (
     <>
@@ -56,24 +58,18 @@ const Navbar = () => {
           </div>
 
           {/* cart  */}
-          <Link to={"/cart"} className="mr-5 sm:mr-0">
-            <div className="icon-heading-1 relative">
-              <FiShoppingCart className="text-xl" />
-              {currentProduct?.length > 0 && (
-                <span className="absolute top-0 left-4 w-2 h-2 bg-red-500 rounded-full"></span>
-              )}
-              {/* <h3 className=" heading-2">Cart</h3> */}
-            </div>
-          </Link>
+          <div
+            onClick={handleCartClick}
+            className="icon-heading-1 relative mr-5 sm:mr-0"
+          >
+            <FiShoppingCart className="text-xl" />
+            {currentProduct?.length > 0 && (
+              <span className="absolute top-0 left-4 w-2 h-2 bg-red-500 rounded-full"></span>
+            )}
+          </div>
 
           {/* account  */}
           <div className="sm:block hidden">
-            {/* <div
-            onClick={() => navigate("/account")}
-            className="sm:block hidden select-none cursor-pointer p-3 border-black border-opacity-70 rounded-full border-[1.5px]"
-          >
-            <GoPerson className=" text-xl " />
-          </div> */}
             <Profile />
           </div>
 

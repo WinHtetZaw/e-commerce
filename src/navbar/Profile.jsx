@@ -6,12 +6,16 @@ import { toast } from "react-hot-toast";
 import { GoPerson } from "react-icons/go";
 
 // * react router dom
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
+// * helper
 import { setUaiToStorage, shopcartUai } from "../helper/helper";
+
+// * react redux
 import { useDispatch, useSelector } from "react-redux";
 import { setIsLogin } from "../redux/features/generalSlice";
 
-// animation
+// * animation
 import { AnimatePresence, motion } from "framer-motion";
 
 const Profile = () => {
@@ -19,6 +23,7 @@ const Profile = () => {
   const [isOpened, setIsOpened] = useState(false);
   const { isLogin } = useSelector((state) => state.generalSlice);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   // * use effects
   useEffect(() => {
@@ -28,6 +33,15 @@ const Profile = () => {
   }, []);
 
   // * handles
+
+  const handleAccountClick = () => {
+    if (isLogin) {
+      navigate("/account");
+    } else {
+      toast.error("Need an account for this action!");
+    }
+  };
+
   const handleLogoutClick = () => {
     dispatch(setIsLogin(false));
     shopcartUai.auth = false;
@@ -54,9 +68,9 @@ const Profile = () => {
             transition={{ duration: 0.2 }}
             className="dropdown-area-1 top-12 font-1 right-0"
           >
-            <Link to={"/account"}>
-              <li className=" dropdown-item">Account</li>
-            </Link>
+            <li onClick={handleAccountClick} className=" dropdown-item">
+              Account
+            </li>
             {isLogin ? (
               <li onClick={handleLogoutClick} className=" dropdown-item">
                 Log out
