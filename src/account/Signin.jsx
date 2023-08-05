@@ -15,7 +15,7 @@ import { useDispatch } from "react-redux";
 import { setIsLogin } from "../redux/features/generalSlice";
 
 // * helper function
-import { UAI, setUaiToStorage, setLocalStorage } from "../helper/helper";
+import { UAI, setUaiToStorage, setLocalStorage, getLocalStorage } from "../helper/helper";
 
 // * icons
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
@@ -37,9 +37,10 @@ const Signin = () => {
 
   // * UAI ---> user account information
   const onSubmit = (data) => {
-    if (UAI && data.email === UAI.email && data.password === UAI.password) {
-      UAI.auth = true;
-      setLocalStorage("shopcart-UAI", UAI);
+    const uai = getLocalStorage("shopcart-UAI")
+    if (uai && data.email === uai.email && data.password === uai.password) {
+      uai.auth = true;
+      setLocalStorage("shopcart-UAI", uai);
       toast.success("Successfully Log in!");
       dispatch(setIsLogin(true));
 

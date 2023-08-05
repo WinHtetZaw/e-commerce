@@ -68,7 +68,7 @@ const ProductDetail = () => {
   // * handles
   const handleAddToCartClick = (product) => {
     if (!UAI.auth || !isLogin) {
-      toast.custom((t) => <GuestAlert t={t} />);
+      toast.error("Need an account for this action!");
       return;
     }
 
@@ -79,7 +79,7 @@ const ProductDetail = () => {
 
   const handleRemoveFromCartClick = (product) => {
     if (!UAI.auth || !isLogin) {
-      toast.custom((t) => <GuestAlert t={t} />);
+      toast.error("Need an account for this action!");
       return;
     }
     setIsAdded(false);
@@ -89,7 +89,7 @@ const ProductDetail = () => {
 
   const handleBuyNowClick = (product) => {
     if (!UAI.auth || !isLogin) {
-      toast.custom((t) => <GuestAlert t={t} />);
+      toast.error("Need an account for this action!");
       return;
     }
     dispatch(addToCart(product));
@@ -98,7 +98,7 @@ const ProductDetail = () => {
 
   const handlePlusClick = (product) => {
     if (!UAI.auth || !isLogin) {
-      toast.custom((t) => <GuestAlert t={t} />);
+      toast.error("Need an account for this action!");
       return;
     }
     if (!isCurrentProduct) {
@@ -113,7 +113,7 @@ const ProductDetail = () => {
 
   const handleMinusClick = (product) => {
     if (!UAI.auth || !isLogin) {
-      toast.custom((t) => <GuestAlert t={t} />);
+      toast.error("Need an account for this action!");
       return;
     }
 

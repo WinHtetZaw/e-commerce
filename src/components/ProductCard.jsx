@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 // * react router dom
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 // * mantine ui library
 import { Rating } from "@mantine/core";
@@ -24,7 +24,6 @@ import {
 
 // * alert notification
 import { toast } from "react-hot-toast";
-import GuestAlert from "./GuestAlert";
 
 const ProductCard = (props) => {
   const { id, title, thumbnail, description, category, rating, price } = props;
@@ -67,7 +66,7 @@ const ProductCard = (props) => {
     e.stopPropagation();
 
     if (!UAI.auth || !isLogin) {
-      toast.custom((t) => <GuestAlert t={t} />);
+      toast.error("Need an account for this action!");
       return;
     }
     setIsAdded(true);
@@ -79,7 +78,7 @@ const ProductCard = (props) => {
     e.stopPropagation();
 
     if (!UAI.auth || !isLogin) {
-      toast.custom((t) => <GuestAlert t={t} />);
+      toast.error("Need an account for this action!");
       return;
     }
 
@@ -88,12 +87,11 @@ const ProductCard = (props) => {
     toast.success("Successfully removed");
   };
 
-
   const handleAddFavoriteClick = (e, product) => {
     e.stopPropagation();
 
     if (!UAI.auth || !isLogin) {
-      toast.custom((t) => <GuestAlert t={t} />);
+      toast.error("Need an account for this action!");
       return;
     }
 
@@ -106,7 +104,7 @@ const ProductCard = (props) => {
     e.stopPropagation();
 
     if (!UAI.auth || !isLogin) {
-      toast.custom((t) => <GuestAlert t={t} />);
+      toast.error("Need an account for this action!");
       return;
     }
 
