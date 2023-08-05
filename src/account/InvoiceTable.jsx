@@ -1,8 +1,6 @@
 // * icons
-import { AiOutlinePlus } from "react-icons/ai";
 import { BsPerson, BsArrowDownUp } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import AddNewBtn from "../components/AddNewBtn";
 
 const InvoiceTable = () => {
   // * random id for invoice
@@ -14,7 +12,7 @@ const InvoiceTable = () => {
   );
 
   return (
-    <div>
+    <>
       {/* top  */}
       <div className=" flex justify-between items-center px-5 mb-5">
         <h1 className="text-lg font-semibold">Invoices</h1>
@@ -178,7 +176,7 @@ const InvoiceTable = () => {
           </tbody>
         </table>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -18,12 +18,13 @@ import UpdateAddressForm from "./UpdateAddressForm";
 import { setIsLogin } from "../redux/features/generalSlice";
 import { setUaiToStorage, shopcartUai } from "../helper/helper";
 import { toast } from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PasswordChangeForm from "./PasswordChangeForm";
 
 const ProfilePage = () => {
   // * hooks
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { personalInfo, addressInfo } = useSelector(
     (state) => state.updateInfoSlice
   );
@@ -53,8 +54,8 @@ const ProfilePage = () => {
     dispatch(setIsLogin(false));
     shopcartUai.auth = false;
     setUaiToStorage(shopcartUai);
-    // localStorage.setItem("shopcart-UAI", JSON.stringify(shopcartUai));
     toast.success("Successfully log out!");
+    navigate("/products");
   };
 
   return (
@@ -186,12 +187,15 @@ const ProfilePage = () => {
             </div>
 
             {/* <Link to={"/password-recovery"}> */}
-              <div onClick={handlePasswordChangeForm} className=" flex items-center gap-2 cursor-pointer click-animation">
-                <p className="italic whitespace-normal select-none">
-                  Password change
-                </p>
-                <RiLockPasswordLine />
-              </div>
+            <div
+              onClick={handlePasswordChangeForm}
+              className=" flex items-center gap-2 cursor-pointer click-animation"
+            >
+              <p className="italic whitespace-normal select-none">
+                Password change
+              </p>
+              <RiLockPasswordLine />
+            </div>
             {/* </Link> */}
           </section>
         </div>
@@ -211,7 +215,9 @@ const ProfilePage = () => {
 
       <AnimatePresence>
         {isOpened.passwordChangeForm && (
-          <PasswordChangeForm handlePasswordChangeForm={handlePasswordChangeForm} />
+          <PasswordChangeForm
+            handlePasswordChangeForm={handlePasswordChangeForm}
+          />
         )}
       </AnimatePresence>
     </>

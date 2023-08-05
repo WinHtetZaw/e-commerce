@@ -17,7 +17,7 @@ const Dashboard = () => {
   return (
     <div className=" bg-white w-full h-full px-5 py-7">
       {/* top */}
-      <section className=" flex items-center justify-between mb-5">
+      <section className=" flex items-center justify-between mb-10">
         {/* left  */}
         <h1 className="heading-1 text-slate-800">Dashboard</h1>
 
@@ -34,23 +34,23 @@ const Dashboard = () => {
       </section>
 
       {/* cards  */}
-      <section className="grid grid-cols-12 gap-3 mb-16">
+      <section className="grid grid-cols-12 gap-x-5 gap-y-7 mb-16">
         {/* first card  */}
-        <div className=" col-span-12 xs:col-span-6 lg:col-span-3 bg-white-1 rounded-md">
-          <div className="flex border-b items-center gap-2 p-2">
+        <div className=" card-container">
+          <div className="flex bdr-b items-center gap-2 p-3">
             <span className="rounded w-7 h-7 flex justify-center items-center bg-white-2">
               <FaTruck className=" bg-white-2" />
             </span>
             <h1>Delivery</h1>
           </div>
           <div className="flex">
-            <span className="w-1/2 p-2 border-r">
+            <span className="w-1/2 p-3 bdr-r">
               <p className="w-full text-center">210</p>
               <p className="w-full text-center text-sm whitespace-nowrap">
                 Processing
               </p>
             </span>
-            <span className="w-1/2 p-2">
+            <span className="w-1/2 p-3">
               <p className="w-full text-center">14</p>
               <p className="w-full text-center text-sm whitespace-nowrap">
                 Processed
@@ -60,21 +60,21 @@ const Dashboard = () => {
         </div>
 
         {/* second card  */}
-        <div className=" col-span-12 xs:col-span-6 lg:col-span-3 bg-white-1 rounded-md">
-          <div className="flex border-b items-center gap-2 p-2">
+        <div className=" card-container">
+          <div className="flex bdr-b items-center gap-2 p-3">
             <span className="rounded w-7 h-7 flex justify-center items-center bg-white-2">
               <MdPayment className=" bg-white-2" />
             </span>
             <h1>Payment</h1>
           </div>
           <div className="flex">
-            <span className="w-1/2 p-2 border-r">
+            <span className="w-1/2 p-3 bdr-r">
               <p className="w-full text-center">6</p>
               <p className="w-full text-center text-sm whitespace-nowrap">
                 Not yet paid
               </p>
             </span>
-            <span className="w-1/2 p-2">
+            <span className="w-1/2 p-3">
               <p className="w-full text-center">4</p>
               <p className="w-full text-center text-sm whitespace-nowrap">
                 Promo
@@ -84,21 +84,21 @@ const Dashboard = () => {
         </div>
 
         {/* third card  */}
-        <div className=" col-span-12 xs:col-span-6 lg:col-span-3 bg-white-1 rounded-md">
-          <div className="flex border-b items-center gap-2 p-2">
+        <div className=" card-container">
+          <div className="flex bdr-b items-center gap-2 p-3">
             <span className="rounded w-7 h-7 flex justify-center items-center bg-white-2">
               <BiLogoProductHunt className=" bg-white-2" />
             </span>
             <h1>Product</h1>
           </div>
           <div className="flex">
-            <span className="w-1/2 p-2 border-r">
+            <span className="w-1/2 p-3 bdr-r">
               <p className="w-full text-center">0</p>
               <p className="w-full text-center text-sm  whitespace-nowrap">
                 Product block
               </p>
             </span>
-            <span className="w-1/2 p-2">
+            <span className="w-1/2 p-3">
               <p className="w-full text-center">120</p>
               <p className="w-full text-center text-sm whitespace-nowrap">
                 Sold out
@@ -108,21 +108,21 @@ const Dashboard = () => {
         </div>
 
         {/* fourth card  */}
-        <div className=" col-span-12 xs:col-span-6 lg:col-span-3 bg-white-1 rounded-md">
-          <div className="flex border-b items-center gap-2 p-2">
+        <div className=" card-container">
+          <div className="flex bdr-b items-center gap-2 p-3">
             <span className="rounded w-7 h-7 flex justify-center items-center bg-white-2">
               <PiSquareHalfBold className=" bg-white-2" />
             </span>
             <h1>Product</h1>
           </div>
           <div className="flex">
-            <span className="w-1/2 p-2 border-r">
+            <span className="w-1/2 p-3 bdr-r">
               <p className="w-full text-center">2</p>
               <p className="w-full text-center text-sm whitespace-nowrap">
                 Cancelation
               </p>
             </span>
-            <span className="w-1/2 p-2">
+            <span className="w-1/2 p-3">
               <p className="w-full text-center">4</p>
               <p className="w-full text-center text-sm  whitespace-nowrap">
                 Return
@@ -133,12 +133,14 @@ const Dashboard = () => {
       </section>
 
       {/* line chart  */}
-      <section className="flex overflow-x-scroll">
+      <section className="flex flex-col md:flex-row md:items-center gap-y-10 overflow-x-scroll mb-16">
         <LChart />
         <PChart />
       </section>
 
-      <InvoiceTable />
+      <section className=" mb-10">
+        <InvoiceTable />
+      </section>
     </div>
   );
 };

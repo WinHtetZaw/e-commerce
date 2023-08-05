@@ -8,18 +8,6 @@ import { toast } from "react-hot-toast";
 const AccountLayout = () => {
   // * hooks
   const [isOpened, setIsOpened] = useState(false);
-  const location = useLocation();
-
-  const { isLogin } = useSelector((state) => state.generalSlice);
-
-  // if (!isLogin) {
-  //   return (
-  //     <>
-  //       {toast.error("Need an account for this action!")}
-  //       <Navigate to={"/products"} replace />
-  //     </>
-  //   );
-  // }
 
   return (
     <div className="flex gap-7 w-full min-h-[85vh] bg-gray-100">
@@ -32,7 +20,7 @@ const AccountLayout = () => {
       </div>
 
       {/* children  */}
-      <div className={`${isOpened ? " w-full" : " w-full"} h-full`}>
+      <div className={`${isOpened ? " w-full" : " w-full"} h-full overflow-x-scroll`}>
         <Outlet />
       </div>
     </div>

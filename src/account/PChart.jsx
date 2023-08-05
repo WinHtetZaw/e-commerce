@@ -2,9 +2,11 @@ import { RingProgress } from "@mantine/core";
 
 const PChart = () => {
   return (
-    <div className=" w-4/12">
-      <h2>Order Status</h2>
-      <p className=" text-sm opacity-80">Total Earnings of the Month</p>
+    <div className=" mx-auto">
+      <div className=" w-full max-md:text-center">
+        <h2>Order Status</h2>
+        <p className=" text-sm opacity-80">Total Earnings of the Month</p>
+      </div>
 
       <div className=" flex items-center">
         <RingProgress

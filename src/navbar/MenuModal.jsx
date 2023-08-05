@@ -47,7 +47,7 @@ const MenuModal = () => {
             onClick={() => setIsOpened(false)}
             className="absolute z-10 inset-0 bg-black bg-opacity-70"
           ></div>
-          <div className="fixed z-20 px-5 right-0 top-0 h-full bg-white pt-5 w-[80%] xs:w-[50%]">
+          <div className="fixed z-20 px-5 right-0 top-0 h-full bg-white pt-5 w-[80%] xs:w-[60%]">
             <div
               onClick={() => setIsOpened(false)}
               className=" absolute top-1 -left-7"

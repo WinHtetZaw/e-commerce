@@ -12,7 +12,7 @@ import { lineData } from "../data/chartData";
 
 const LChart = () => {
   return (
-    <div className=" w-8/12 min-w-[700px]">
+    <div className=" md:w-8/12 min-w-[700px]">
       <LineChart
         width={700}
         height={300}

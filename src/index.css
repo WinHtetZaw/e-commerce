@@ -152,6 +152,9 @@ body {
   .card-1 {
     @apply p-5 shadow-4 border-[1.5px] border-teal-800 rounded-1;
   }
+  .card-container {
+    @apply col-span-12 sm:col-span-6 lg:col-span-3 bg-white-1 shadow-1 rounded-md;
+  }
   .bdr {
     @apply border border-black border-opacity-50;
   }
@@ -185,6 +188,9 @@ body {
   }
   .click-animation {
     @apply active:scale-95 transition duration-150;
+  }
+  .click-animation-1 {
+    @apply active:scale-90 transition duration-150;
   }
   .link-btn {
     @apply underline opacity-70 text-white tracking-widest font-light italic;

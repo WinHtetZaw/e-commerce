@@ -19,7 +19,7 @@ const Breadcrumb = () => {
           const breadcrumb = el.breadcrumb.props.children;
           const link = el.key;
           return (
-            <Link to={`${link}`} className=" breadcrumb flex italic" key={index}>
+            <Link to={`${link}`} className=" breadcrumb flex font-semibold" key={index}>
               <div className="">{breadcrumb}</div>
             </Link>
           );

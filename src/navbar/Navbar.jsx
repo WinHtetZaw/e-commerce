@@ -63,7 +63,7 @@ const Navbar = () => {
             className="icon-heading-1 relative mr-5 sm:mr-0"
           >
             <FiShoppingCart className="text-xl" />
-            {currentProduct?.length > 0 && (
+            {(isLogin && currentProduct?.length > 0) && (
               <span className="absolute top-0 left-4 w-2 h-2 bg-red-500 rounded-full"></span>
             )}
           </div>

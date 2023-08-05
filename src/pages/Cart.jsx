@@ -152,7 +152,7 @@ const Cart = () => {
           </section>
 
           {/* left  */}
-          <section className="p-5 text-sm md:p-10 ml-auto lg:mx-auto shadow-4 rounded-lg min-w-[250px] w-1/3 h-fit">
+          <section className="px-5 py-7 text-sm md:p-10 sm:ml-auto lg:mx-auto shadow-4 rounded-lg min-w-[250px] w-1/3 h-fit">
             {/* Subtotal  */}
             <div className=" mb-2 flex justify-between items-center">
               <h2 className=" font-bold opacity-70">Subtotal</h2>
@@ -184,7 +184,7 @@ const Cart = () => {
             </div>
 
             <Link to={"/cart/checkout"}>
-              <button className=" active:scale-95 transition duration-200 btn-1 w-full bg-teal-800 text-slate-100">
+              <button className="mt-3 active:scale-95 transition duration-200 btn-1 w-full bg-teal-800 text-slate-100">
                 Checkout Now
               </button>
             </Link>
