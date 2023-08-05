@@ -15,7 +15,7 @@ import { removeAll, removeFromFavorite } from "../redux/features/favoriteSlice";
 import { Link, useNavigate } from "react-router-dom";
 
 // * components
-import AddNewBtn from "../components/addNewBtn";
+import AddNewBtn from "../components/AddNewBtn";
 import RemoveAllBtn from "../components/RemoveAllBtn";
 
 const Favorite = () => {

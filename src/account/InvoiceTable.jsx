@@ -2,7 +2,7 @@
 import { AiOutlinePlus } from "react-icons/ai";
 import { BsPerson, BsArrowDownUp } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import AddNewBtn from "../components/addNewBtn";
+import AddNewBtn from "../components/AddNewBtn";
 
 const InvoiceTable = () => {
   // * random id for invoice
