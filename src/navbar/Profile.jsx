@@ -47,6 +47,7 @@ const Profile = () => {
     shopcartUai.auth = false;
     setUaiToStorage(shopcartUai);
     toast.success("Successfully log out!");
+    navigate("/products");
   };
 
   return (

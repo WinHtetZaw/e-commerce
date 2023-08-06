@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 // * mantine ui library
-import { Rating, Skeleton } from "@mantine/core";
+import { Rating } from "@mantine/core";
 
 // * icons
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
@@ -21,7 +21,6 @@ import {
 
 // * alert notification
 import { toast } from "react-hot-toast";
-import { getLocalStorage } from "../helper/helper";
 
 const ProductCard = (props) => {
   const { id, title, thumbnail, description, category, rating, price } = props;
@@ -31,28 +30,15 @@ const ProductCard = (props) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const { isLogin } = useSelector((state) => state.generalSlice);
   const { favoriteProducts } = useSelector((state) => state.favoriteSlice);
+  const { currentItemInfo } = useSelector((state) => state.cartSlice);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const authUser = getLocalStorage("auth-user");
-
-  // * get cart lists info from local storage
-  const currentProduct = JSON.parse(
-    localStorage.getItem("storedCart")
-  )?.currentProduct;
-
-  let storedFavorite;
-  if (localStorage.getItem("stored-favorite")) {
-    storedFavorite = JSON.parse(localStorage.getItem("stored-favorite"));
-  }
-
-  const isCurrentProduct = currentProduct?.find(
+  const isCurrentProduct = currentItemInfo?.find(
     (el) => el.currentProductId == id
   );
 
-  const currentFavoriteProduct = storedFavorite?.find((el) => el.id == id);
-
-  // const UAI = JSON.parse(localStorage.getItem("shopcart-UAI"));
+  const currentFavoriteProduct = favoriteProducts?.find((el) => el.id == id);
 
   useEffect(() => {
     if (currentFavoriteProduct) {
@@ -116,14 +102,10 @@ const ProductCard = (props) => {
   };
 
   return (
-    <div
-      key={id}
-      // onClick={() => navigate(`/products/${id}`)}
-      className=" relative bg-white"
-    >
+    <div key={id} className=" relative bg-white">
       {/* favorite icon  */}
       <div className=" absolute z-10 top-2 right-2 bg-white p-1 rounded-full">
-        {currentFavoriteProduct && authUser ? (
+        {currentFavoriteProduct && isLogin ? (
           <AiFillHeart
             onClick={(e) => handleRemoveFavoriteClick(e, props)}
             className="text-red-500"

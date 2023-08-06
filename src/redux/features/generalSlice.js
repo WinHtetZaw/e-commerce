@@ -10,7 +10,7 @@ const initialState = {
 let authUser;
 if (getLocalStorage("auth-user")) {
   authUser = getLocalStorage("auth-user");
-  initialState.favoriteProducts = authUser;
+  initialState.isLogin = authUser;
 }
 
 export const generalSlice = createSlice({
