@@ -68,7 +68,7 @@ const Search = (props) => {
           </motion.div>
         )}
       </AnimatePresence>
-      <div className="border-r-[1.5px] border-black h-[20px] mr-2 opacity-30"></div>
+      <div className="border-r-[1.5px] border-black h-[20px] mr-2 opacity-20"></div>
       <div
         onClick={handleSubmit}
         className=" opacity-70 cursor-pointer click-animation-1"

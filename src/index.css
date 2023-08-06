@@ -103,6 +103,9 @@ body {
 }
 
 @layer components {
+  .click-animation-1 {
+    @apply active:scale-90 transition duration-150;
+  }
   .bg-white-1 {
     @apply bg-[#f9fafc];
   }
@@ -121,13 +124,18 @@ body {
   .icon-heading-1 {
     @apply flex items-center gap-1;
   }
+  .btn {
+    @apply py-1 px-3 select-none cursor-pointer click-animation;
+  }
   .btn-1 {
-    @apply px-4 py-2 rounded-full outline-none;
+    @apply px-4 py-2 rounded-full outline-none click-animation;
+  }
+  .btn-0 {
+    @apply btn bg-teal-800 text-slate-50 rounded-full text-sm;
   }
   .btn-2 {
-    @apply px-3 py-1 active:scale-95 transition duration-200 rounded-full select-none cursor-pointer text-sm border-[1.5px] border-black border-opacity-70;
+    @apply btn rounded-full text-sm border-[1.5px] border-black border-opacity-70;
   }
-
   .dropdown-base-1 {
     @apply relative h-10;
   }
@@ -189,11 +197,13 @@ body {
   .click-animation {
     @apply active:scale-95 transition duration-150;
   }
-  .click-animation-1 {
-    @apply active:scale-90 transition duration-150;
-  }
+
   .link-btn {
     @apply underline opacity-70 text-white tracking-widest font-light italic;
+  }
+
+  .skeleton {
+    @apply bg-[#dee2e6] rounded-full animate-pulse;
   }
 
   /* text-[#547dc7] bg-[#e9f0ff] */

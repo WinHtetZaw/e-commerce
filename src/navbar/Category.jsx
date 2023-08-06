@@ -36,27 +36,27 @@ const Category = () => {
 
         {/* drop area  */}
         <AnimatePresence>
-        {isOpen && (
-          <motion.ul
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="dropdown-area-1 top-10 font-1 left-0 xs:right-0 h-[50vh] overflow-y-scroll"
-          >
-            <li className=" text-sm opacity-50 text-center font-bold">
-              Category List
-            </li>
-            <Link to={"/products"}>
+          {isOpen && !isLoading && isSuccess && (
+            <motion.ul
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="dropdown-area-1 top-10 font-1 left-0 xs:right-0 h-[50vh] overflow-y-scroll"
+            >
+              <li className=" text-sm opacity-50 text-center font-bold">
+                Category List
+              </li>
+              {/* <Link to={"/products"}>
               <li className="dropdown-item mt-3">Show All</li>
-            </Link>
-            {data?.map((el, index) => (
-              <Link key={index} to={`/products/category/${el}`}>
-                <li className="dropdown-item">{el}</li>
-              </Link>
-            ))}
-          </motion.ul>
-        )}
+            </Link> */}
+              {data?.map((el, index) => (
+                <Link key={index} to={`/products/category/${el}`}>
+                  <li className="dropdown-item">{el}</li>
+                </Link>
+              ))}
+            </motion.ul>
+          )}
         </AnimatePresence>
       </div>
     </>

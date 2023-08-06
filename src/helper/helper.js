@@ -1,4 +1,3 @@
-
 // * local storage
 export let shopcartUai;
 if (localStorage.getItem("shopcart-UAI")) {
@@ -16,3 +15,4 @@ export const setLocalStorage = (text, data) =>
   localStorage.setItem(text, JSON.stringify(data));
 
 export const getLocalStorage = (text) => JSON.parse(localStorage.getItem(text));
+

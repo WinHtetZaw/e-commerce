@@ -86,10 +86,10 @@ const ProfilePage = () => {
                 {addressInfo ? addressInfo.country : " United Kingdom"}
               </p>
             </div>
-            <div className=" absolute opacity-90 sm:bottom-auto right-3 sm:top-5 sm:right-5 flex items-center gap-2 btn-2 border-opacity-40">
+            {/* <div className=" absolute opacity-90 sm:bottom-auto right-3 sm:top-5 sm:right-5 flex items-center gap-2 btn-2 border-opacity-40">
               <span className="">Edit</span>
               <BsPencilFill />
-            </div>
+            </div> */}
           </section>
 
           {/* personal information  */}

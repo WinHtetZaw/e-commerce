@@ -14,37 +14,28 @@ import {
   removeFromCart,
 } from "../redux/features/cartSlice";
 
-// components
+// * components
 import BackBtn from "../components/BackBtn";
 import AddNewBtn from "../components/AddNewBtn";
 import RemoveAllBtn from "../components/RemoveAllBtn";
+import EmptyCart from "../components/EmptyCart";
 
 const Cart = () => {
-  const { cartProducts } = useSelector((state) => state.cartSlice);
+  const { cartProducts, currentItemInfo, totalPrice } = useSelector(
+    (state) => state.cartSlice
+  );
   const dispatch = useDispatch();
 
-  let storedCart;
-  if (JSON.parse(localStorage.getItem("storedCart"))?.products.length > 0) {
-    storedCart = JSON.parse(localStorage.getItem("storedCart"));
-  }
-
-  const products = JSON.parse(localStorage.getItem("storedCart"))?.products;
-  const currentProduct = JSON.parse(
-    localStorage.getItem("storedCart")
-  )?.currentProduct;
-
   const taxCalculation = (percent = 5) => {
-    return (storedCart?.totalPrice * (percent / 100)).toFixed(2);
+    return (totalPrice * (percent / 100)).toFixed(2);
   };
 
   const grandTotalCalculation = () => {
-    return (
-      parseFloat(storedCart?.totalPrice) + parseFloat(taxCalculation())
-    ).toFixed(2);
+    return (parseFloat(totalPrice) + parseFloat(taxCalculation())).toFixed(2);
   };
 
-  const rows = products?.map((item, index) => {
-    const currentItem = currentProduct?.find(
+  const rows = cartProducts?.map((item, index) => {
+    const currentItem = currentItemInfo?.find(
       (el) => el.currentProductId == item.id
     );
     const currentItemQuantity = currentItem?.quantity;
@@ -106,7 +97,7 @@ const Cart = () => {
   return (
     <>
       <BackBtn />
-      {storedCart?.products.length > 0 ? (
+      {cartProducts.length > 0 ? (
         <div className=" flex flex-col lg:flex-row gap-10 md:gap-16 py-10 md:pb-16">
           {/* cart list table  */}
           <section className="md:p-10 overflow-x-scroll sm:overflow-x-hidden text-sm p-5 w-full lg:w-2/3 shadow-4 rounded-lg">
@@ -137,9 +128,7 @@ const Cart = () => {
                   <th className=" text-right pt-5" colSpan={3}>
                     Total Price
                   </th>
-                  <th className=" text-right pt-5">
-                    ${(storedCart?.totalPrice).toFixed(2)}
-                  </th>
+                  <th className=" text-right pt-5">${totalPrice.toFixed(2)}</th>
                 </tr>
               </tfoot>
             </table>
@@ -151,13 +140,13 @@ const Cart = () => {
             </div>
           </section>
 
-          {/* left  */}
+          {/* right  */}
           <section className="px-5 py-7 text-sm md:p-10 sm:ml-auto lg:mx-auto shadow-4 rounded-lg min-w-[250px] w-1/3 h-fit">
             {/* Subtotal  */}
             <div className=" mb-2 flex justify-between items-center">
               <h2 className=" font-bold opacity-70">Subtotal</h2>
               <p className=" select-none font-semibold">
-                ${(storedCart?.totalPrice).toFixed(2)}
+                ${totalPrice.toFixed(2)}
               </p>
             </div>
 
@@ -191,26 +180,29 @@ const Cart = () => {
           </section>
         </div>
       ) : (
-        // if cart is empty show text
-        <div className=" w-full h-[90vh]">
-          <p className="shadow-4 p-10 w-[70%] rounded-3xl mx-auto mt-16 flex flex-col font-mono">
-            <span className=" font-semibold lg:text-lg mb-3">
-              Your Cart is Empty
-            </span>
-            <span className="mb-1 tracking-wider">
-              Start shopping now to fill your cart with amazing products!
-            </span>
-            <span className="mb-3 tracking-wider hidden lg:block">
-              Take advantage of our special offers and discounts, and don&apos;t
-              forget to check out our featured deals for even more savings.
-            </span>
-            <span className=" lg:text-lg">Happy shopping!</span>
-            <Link to={"/products"} className=" lg:ml-auto">
-              <button className=" px-4 py-2 text-sm bg-teal-800 text-slate-100 rounded-full w-fit mt-3 active:scale-95">
+        // empty message
+        <div className="flex flex-col gap-y-5 sm:flex-row justify-center my-10 items-center">
+          {/* right  */}
+          <div className=" w-[200px] h-[200px]">
+            <EmptyCart />
+          </div>
+
+          {/* left  */}
+          <div className="flex flex-col max-sm:items-center">
+            <h2 className="flex font-semibold flex-col italic tracking-wider mb-3 max-sm:items-center">
+              <span>Your Cart is Empty</span>
+              <span>
+                Start shopping now to fill your cart with amazing products!
+              </span>
+
+              <span>Happy shopping!</span>
+            </h2>
+            <Link to={"/products"}>
+              <button className=" px-3 py-1 text-sm bg-teal-800 text-slate-50 rounded-full w-fit click-animation">
                 Go to shop
               </button>
             </Link>
-          </p>
+          </div>
         </div>
       )}
     </>

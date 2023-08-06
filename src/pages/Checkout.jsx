@@ -4,7 +4,6 @@ import ShippingForm from "../components/ShippingForm";
 import { useDispatch, useSelector } from "react-redux";
 import OrderSuccessCard from "../components/OrderSuccessCard";
 import { useState } from "react";
-import { setScrollable } from "../redux/features/generalSlice";
 import BackBtn from "../components/BackBtn";
 
 const Checkout = () => {
@@ -45,7 +44,8 @@ const Checkout = () => {
           <ShippingForm />
         </div>
 
-        <article className=" ml-auto text-sm shadow-4 h-fit rounded-lg p-5 md:p-10">
+        {/* submit payment  */}
+        <article className=" sm:ml-auto lg:mx-auto text-sm shadow-4 h-fit rounded-lg p-5 md:p-10">
           <div className=" flex flex-col gap-2 w-full">
             <label className=" w-2/3 font-mono text-base" htmlFor="state">
               Discount Code

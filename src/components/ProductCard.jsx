@@ -1,14 +1,11 @@
 // * react
 import { useEffect, useState } from "react";
 
-// * animation
-import { motion } from "framer-motion";
-
 // * react router dom
 import { useNavigate } from "react-router-dom";
 
 // * mantine ui library
-import { Rating } from "@mantine/core";
+import { Rating, Skeleton } from "@mantine/core";
 
 // * icons
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
@@ -33,6 +30,7 @@ const ProductCard = (props) => {
   const [isAdded, setIsAdded] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
   const { isLogin } = useSelector((state) => state.generalSlice);
+  const { favoriteProducts } = useSelector((state) => state.favoriteSlice);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -52,13 +50,9 @@ const ProductCard = (props) => {
     (el) => el.currentProductId == id
   );
 
-  // const isCurrentProduct = getLocalStorage("storedCart")?.currentProduct?.find(
-  //   (el) => el.currentProductId == id
-  // );
-
   const currentFavoriteProduct = storedFavorite?.find((el) => el.id == id);
 
-  const UAI = JSON.parse(localStorage.getItem("shopcart-UAI"));
+  // const UAI = JSON.parse(localStorage.getItem("shopcart-UAI"));
 
   useEffect(() => {
     if (currentFavoriteProduct) {
@@ -67,9 +61,7 @@ const ProductCard = (props) => {
     if (isCurrentProduct) {
       setIsAdded(true);
     }
-  }, [currentFavoriteProduct,isCurrentProduct]);
-
-  // const current = storedFavorite?.find((el) => el.id === id);
+  }, [currentFavoriteProduct, isCurrentProduct]);
 
   // * handles
   const handleAddToCartClick = (e, product) => {
@@ -125,7 +117,8 @@ const ProductCard = (props) => {
 
   return (
     <div
-      onClick={() => navigate(`/products/${id}`)}
+      key={id}
+      // onClick={() => navigate(`/products/${id}`)}
       className=" relative bg-white"
     >
       {/* favorite icon  */}
@@ -140,18 +133,16 @@ const ProductCard = (props) => {
         )}
       </div>
 
-      <motion.div
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 0.5, delay: 0.2, ease: "easeIn" }}
-        className="relative select-none hover:shadow-4 transition duration-200 rounded-lg w-full aspect-square bg-gray-100"
+      <button
+        onClick={() => navigate(`/products/${id}`)}
+        className="relative select-none hover:shadow-4 transition duration-200 rounded-lg w-full aspect-square bg-gray-100 overflow-hidden"
       >
         <img
           className=" object-contain w-full h-full"
           src={thumbnail}
           alt={title}
         />
-      </motion.div>
+      </button>
 
       <section className=" flex gap-2 mt-2 flex-col">
         <span className=" font-semibold flex flex-col sm:flex-row justify-between sm:items-center">
@@ -166,26 +157,27 @@ const ProductCard = (props) => {
         <p className=" text-sm opacity-70 w-full truncate">{description}</p>
 
         {/* start rating  */}
-        <div className=" flex flex-col gap-3">
+        {/* <div className=" flex flex-col gap-3"> */}
+        <div className=" flex items-center justify-between">
           <Rating
             color="rgb(17 94 89)"
             fractions={3}
             defaultValue={Math.round(rating)}
             readOnly
           />
-          {!isCurrentProduct ? (
+          {isCurrentProduct && isLogin ? (
             <button
-              onClick={(e) => handleAddToCartClick(e, props)}
-              className="active:scale-95 transition duration-200 text-xl"
+              onClick={(e) => handleRemoveFromCartClick(e, props)}
+              className="click-animation w-fit text-xl text-orange-500"
             >
-              <BsCartPlus />
+              <BsCartDash />
             </button>
           ) : (
             <button
-              onClick={(e) => handleRemoveFromCartClick(e, props)}
-              className="active:scale-95 transition duration-200 text-xl text-orange-500"
+              onClick={(e) => handleAddToCartClick(e, props)}
+              className="click-animation w-fit text-xl"
             >
-              <BsCartDash />
+              <BsCartPlus />
             </button>
           )}
         </div>

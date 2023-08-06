@@ -42,7 +42,7 @@ const UpdateUserInfoForm = ({ handleCloseUserForm }) => {
       <motion.form
         variants={formModalChildVariant}
         onSubmit={handleSubmit(onSubmit)}
-        className="max-w-[450px] mx-auto w-full px-10 py-7 flex flex-col gap-5 bg-white opacity-100 rounded-xl"
+        className="max-w-[400px] mx-auto w-full px-10 py-7 flex flex-col gap-5 bg-white opacity-100 rounded-xl"
       >
         {/* title  */}
         <h1 className=" text-xl font-2 font-bold w-full text-center mb-3">

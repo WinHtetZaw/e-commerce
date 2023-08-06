@@ -3,8 +3,8 @@ import { getLocalStorage, setLocalStorage } from "../../helper/helper";
 
 const initialState = {
   categoryName: "",
-  scrollable: true,
   isLogin: false,
+  cartAlert: false,
 };
 
 let authUser;
@@ -23,13 +23,6 @@ export const generalSlice = createSlice({
       }
       state.categoryName = payload;
     },
-    setScrollable: (state, { payload }) => {
-      if (payload) {
-        state.scrollable = payload;
-      } else {
-        state.scrollable = !state.scrollable;
-      }
-    },
     setIsLogin: (state, { payload }) => {
       if (payload) {
         state.isLogin = payload;
@@ -39,9 +32,16 @@ export const generalSlice = createSlice({
         setLocalStorage("auth-user", state.isLogin);
       }
     },
+    setCartAlert: (state, { payload }) => {
+      if (payload) {
+        state.cartAlert = payload;
+      } else {
+        state.cartAlert = !state.cartAlert;
+      }
+    },
   },
 });
 
-export const { searchByCategory, setScrollable, setIsLogin } =
+export const { searchByCategory, setIsLogin, setCartAlert } =
   generalSlice.actions;
 export default generalSlice.reducer;

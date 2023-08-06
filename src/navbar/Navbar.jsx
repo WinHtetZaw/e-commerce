@@ -15,17 +15,13 @@ import Profile from "./Profile";
 import Breadcrumb from "./Breadcrumb";
 import MenuModal from "./MenuModal";
 
-// * helper
-import { getLocalStorage } from "../helper/helper";
-
 // * alert notification
 import { toast } from "react-hot-toast";
 
 const Navbar = () => {
   const { isLogin } = useSelector((state) => state.generalSlice);
+  const { cartProducts } = useSelector((state) => state.cartSlice);
   const navigate = useNavigate();
-
-  const currentProduct = getLocalStorage("storedCart")?.products;
 
   // * handles
   const handleCartClick = () => {
@@ -63,7 +59,7 @@ const Navbar = () => {
             className="icon-heading-1 relative mr-5 sm:mr-0"
           >
             <FiShoppingCart className="text-xl" />
-            {(isLogin && currentProduct?.length > 0) && (
+            {isLogin && cartProducts.length > 0 && (
               <span className="absolute top-0 left-4 w-2 h-2 bg-red-500 rounded-full"></span>
             )}
           </div>

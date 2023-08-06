@@ -17,6 +17,7 @@ import { Link, useNavigate } from "react-router-dom";
 // * components
 import AddNewBtn from "../components/AddNewBtn";
 import RemoveAllBtn from "../components/RemoveAllBtn";
+import EmptyList from "../components/EmptyList";
 
 const Favorite = () => {
   // * hooks
@@ -96,20 +97,16 @@ const Favorite = () => {
 
   return (
     <div className=" w-full min-h-[85vh] bg-white px-5 py-7">
-      {/* head */}
-      <section className=" flex justify-between mb-5">
-        <h3 className=" font-2">Favorite List</h3>
-        {storedFavorite?.length > 0 && (
-          <div
-            onClick={handleRemoveAll}
-          >
-            <RemoveAllBtn/>
-          </div>
-        )}
-      </section>
-
       {storedFavorite?.length > 0 ? (
         <div className="">
+          {/* head */}
+          <section className=" flex justify-between mb-5">
+            <h3 className=" font-2">Favorite List</h3>
+            <div onClick={handleRemoveAll}>
+              <RemoveAllBtn />
+            </div>
+          </section>
+
           {/* main  */}
           <section className=" w-full flex flex-col gap-y-5 mb-5 mt-10">
             {listsLooping}
@@ -124,13 +121,20 @@ const Favorite = () => {
           </section>
         </div>
       ) : (
-        <div className=" ml-5">
-          <h2>No Favorite Items</h2>
-          <Link to={"/products"}>
-            <button className=" text-sm underline mt-5">
-              Go & Add Items to Favorite
+        <div className="flex flex-col sm:flex-row items-center w-[400px] mt-10 mx-auto">
+          <div className=" w-[200px] h-[200px]">
+            <EmptyList />
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <h3>Favorite list is empty.</h3>
+            <button
+              onClick={() => navigate("/products")}
+              className="btn-0 w-fit mx-auto"
+            >
+              Add new
             </button>
-          </Link>
+          </div>
         </div>
       )}
     </div>
