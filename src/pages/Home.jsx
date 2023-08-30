@@ -80,9 +80,9 @@ const Home = () => {
           {/* left  */}
           <motion.div
             variants={leftVariant}
-            className="mt-[50px] w-full sm:w-4/12 flex flex-col gap-5"
+            className="mt-[80px] w-full sm:w-4/12 flex flex-col gap-5"
           >
-            <h1 className=" z-30 text-3xl">Fashion 23</h1>
+            <h1 className=" z-30 text-3xl max-sm:text-center">Fashion 23</h1>
             <p className=" opacity-80 tracking-wider text-sm line-clamp-3 w-full">
               Discover a world of possibilities at our e-commerce haven. From
               trending fashion and cutting-edge electronics to home essentials,
@@ -90,7 +90,7 @@ const Home = () => {
               need.
             </p>
 
-            <div className=" mx-auto relative group w-fit">
+            <div className=" max-sm:mx-auto relative group w-fit">
               <Link to={"/products"}>
                 <button className="rounded-sm w-[120px] active:scale-95 transition duration-200 border opacity-80 hover:opacity-100 py-2 px-4 text-sm">
                   Explore
