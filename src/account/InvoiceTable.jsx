@@ -1,6 +1,5 @@
 // * icons
 import { BsPerson, BsArrowDownUp } from "react-icons/bs";
-import { Link } from "react-router-dom";
 
 const InvoiceTable = () => {
   // * random id for invoice
@@ -20,7 +19,7 @@ const InvoiceTable = () => {
       </div>
 
       {/* invoice table  */}
-      <div className=" h-[200px] overflow-y-scroll">
+      <div className=" h-[200px] overflow-y-scroll overflow-hidden">
         <table className="text-sm w-full border-separate border-spacing-3">
           <thead>
             <tr>

@@ -207,14 +207,14 @@ const ProductDetail = () => {
             {!isCurrentProduct ? (
               <button
                 onClick={() => handleAddToCartClick(data)}
-                className="active:scale-95 transition duration-200 text-2xl"
+                className="hvr-buzz-out text-2xl"
               >
                 <BsCartPlus />
               </button>
             ) : (
               <button
                 onClick={() => handleRemoveFromCartClick(data)}
-                className="active:scale-95 transition duration-200 text-2xl text-orange-500"
+                className="hvr-buzz-out text-2xl text-orange-500"
               >
                 <BsCartDash />
               </button>

@@ -121,7 +121,7 @@ const Favorite = () => {
           </section>
         </div>
       ) : (
-        <div className="flex flex-col sm:flex-row items-center w-[400px] mt-10 mx-auto">
+        <div className="flex flex-col sm:flex-row items-center w-[400px] mt-20 mx-auto">
           <div className=" w-[200px] h-[200px]">
             <EmptyList />
           </div>
@@ -130,9 +130,9 @@ const Favorite = () => {
             <h3>Favorite list is empty.</h3>
             <button
               onClick={() => navigate("/products")}
-              className="btn-0 w-fit mx-auto"
+              className=" italic underline w-fit mx-auto capitalize"
             >
-              Add new
+              go to shop
             </button>
           </div>
         </div>

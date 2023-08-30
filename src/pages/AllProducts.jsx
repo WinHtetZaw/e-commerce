@@ -1,4 +1,5 @@
 // * components
+import ItemCard from "../components/ItemCard";
 import ProductCard from "../components/ProductCard";
 import ProductCardSkeleton from "../components/ProductCardSkeleton";
 
@@ -36,10 +37,9 @@ const AllProducts = () => {
     </motion.div>
   ));
 
-  const loadingArr = [1, 2, 3, 4, 5, 6];
-  const loadingArrLooping = loadingArr.map((el, index) => (
+  const looping2 = products?.map((product, index) => (
     <div className="" key={index}>
-      <ProductCardSkeleton />
+      <ItemCard {...product} />
     </div>
   ));
 
@@ -52,7 +52,7 @@ const AllProducts = () => {
             backgroundImage:
               "url(https://images.pexels.com/photos/399159/pexels-photo-399159.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)",
           }}
-          className=" flex flex-col justify-center md:py-10 py-5 px-8 md:px-16 w-full h-[150px] md:h-[300px] bg-cover bg-bottom bg-no-repeat rounded-lg mt-10"
+          className=" flex flex-col justify-center md:py-10 py-5 px-8 md:px-16 w-full h-[150px] md:h-[300px] bg-cover bg-bottom bg-no-repeat rounded mt-10"
         >
           <h2 className=" tracking-wider  text-teal-800 text-[1.125rem] md:text-[1.875rem] md:lh-3 lh-1 font-2 font-bold capitalize w-full md:w-1/2 lg:w-1/3">
             Grab upto 50% off on selected headphone
@@ -69,6 +69,9 @@ const AllProducts = () => {
       <div className="my-10 grid grid-cols-2 xs:grid-cols-3 lg:grid-cols-4 gap-x-3 gap-y-6 md:gap-x-10 md:gap-y-16">
         {!isLoading && isSuccess ? looping : <ProductCardSkeleton />}
       </div>
+      {/* <div className=" py-10 flex flex-wrap gap-x-7 gap-y-5 justify-center items-center">
+      {!isLoading && isSuccess ? looping2 : <ProductCardSkeleton />}
+      </div> */}
     </>
   );
 };

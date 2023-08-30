@@ -5,12 +5,17 @@ import { useState } from "react";
 import { BsPencilFill } from "react-icons/bs";
 import { IoIosLogOut } from "react-icons/io";
 import { RiLockPasswordLine } from "react-icons/ri";
+import { GoTrash } from "react-icons/go";
 
 // * react redux
 import { useDispatch, useSelector } from "react-redux";
 
 // * animation
 import { AnimatePresence } from "framer-motion";
+
+// * alert
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
 
 // * components
 import UpdateUserInfoForm from "./UpdateUserInfoForm";
@@ -20,9 +25,12 @@ import { setUaiToStorage, shopcartUai } from "../helper/helper";
 import { toast } from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import PasswordChangeForm from "./PasswordChangeForm";
+import { addToFavorite } from "../redux/features/favoriteSlice";
+import Swal from "sweetalert2";
 
 const ProfilePage = () => {
   // * hooks
+  const [isDeleted, setIsDeleted] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { personalInfo, addressInfo } = useSelector(
@@ -54,8 +62,36 @@ const ProfilePage = () => {
     dispatch(setIsLogin(false));
     shopcartUai.auth = false;
     setUaiToStorage(shopcartUai);
-    toast.success("Successfully log out!");
     navigate("/products");
+  };
+
+  const handleAccountDelete = () => {
+    localStorage.removeItem("shopcart-UAI");
+    localStorage.removeItem("auth-user");
+    localStorage.removeItem("stored-favorite");
+    localStorage.removeItem("storedCart");
+    navigate("/products");
+  };
+
+  const handleConfirmation = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete account!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        handleLogoutClick();
+        handleAccountDelete();
+        Swal.fire("Deleted!", "Your account has been deleted.", "success");
+        // setTimeout(() => {
+        //   window.location.reload();
+        // }, 1000);
+      }
+    });
   };
 
   return (
@@ -86,10 +122,6 @@ const ProfilePage = () => {
                 {addressInfo ? addressInfo.country : " United Kingdom"}
               </p>
             </div>
-            {/* <div className=" absolute opacity-90 sm:bottom-auto right-3 sm:top-5 sm:right-5 flex items-center gap-2 btn-2 border-opacity-40">
-              <span className="">Edit</span>
-              <BsPencilFill />
-            </div> */}
           </section>
 
           {/* personal information  */}
@@ -179,11 +211,11 @@ const ProfilePage = () => {
 
           <section className=" flex flex-col gap-y-3 xs:flex-row items-center xs:justify-between">
             <div
-              onClick={handleLogoutClick}
+              onClick={handleConfirmation}
               className="flex items-center gap-2 cursor-pointer click-animation"
             >
-              <p className="italic select-none">Log out</p>
-              <IoIosLogOut />
+              <p className="italic select-none">Delete Account</p>
+              <GoTrash />
             </div>
 
             {/* <Link to={"/password-recovery"}> */}

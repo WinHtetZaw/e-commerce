@@ -21,6 +21,7 @@ import {
 
 // * alert notification
 import { toast } from "react-hot-toast";
+import { motion } from "framer-motion";
 
 const ProductCard = (props) => {
   const { id, title, thumbnail, description, category, rating, price } = props;
@@ -150,16 +151,16 @@ const ProductCard = (props) => {
           {isCurrentProduct && isLogin ? (
             <button
               onClick={(e) => handleRemoveFromCartClick(e, props)}
-              className="click-animation w-fit text-xl text-orange-500"
+              className=" hvr-buzz-out  w-fit text-xl text-orange-500"
             >
-              <BsCartDash />
+              <BsCartDash className="" />
             </button>
           ) : (
             <button
               onClick={(e) => handleAddToCartClick(e, props)}
-              className="click-animation w-fit text-xl"
+              className=" hvr-buzz-out  w-fit text-xl"
             >
-              <BsCartPlus />
+              <BsCartPlus className="" />
             </button>
           )}
         </div>

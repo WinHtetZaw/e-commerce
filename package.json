@@ -15,10 +15,12 @@
     "@mantine/core": "^6.0.16",
     "@mantine/hooks": "^6.0.16",
     "@reduxjs/toolkit": "^1.9.5",
+    "aos": "^2.3.4",
     "chart.js": "^4.3.2",
     "framer-motion": "^10.15.0",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
+    "react-confirm-alert": "^3.0.6",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.45.1",
     "react-hot-toast": "^2.4.1",
@@ -27,6 +29,7 @@
     "react-router-dom": "^6.14.1",
     "react-type-animation": "^3.1.0",
     "recharts": "^2.7.2",
+    "sweetalert2": "^11.7.22",
     "use-react-router-breadcrumbs": "^4.0.1"
   },
   "devDependencies": {

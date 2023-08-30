@@ -125,7 +125,7 @@ const UpdateUserInfoForm = ({ handleCloseUserForm }) => {
           )}
         </div>
 
-        {/* email  */}
+        {/* bio  */}
         <div className=" flex flex-col gap-1">
           <label className=" opacity-90 capitalize" htmlFor="bio">
             Bio

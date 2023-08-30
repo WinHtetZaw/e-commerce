@@ -1,9 +1,6 @@
-import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Aside from "../account/Aside";
 import { useState } from "react";
-import { UAI } from "../helper/helper";
-import { useSelector } from "react-redux";
-import { toast } from "react-hot-toast";
 
 const AccountLayout = () => {
   // * hooks
@@ -20,7 +17,11 @@ const AccountLayout = () => {
       </div>
 
       {/* children  */}
-      <div className={`${isOpened ? " w-full" : " w-full"} h-full overflow-x-scroll`}>
+      <div
+        className={`${
+          isOpened ? " w-full" : " w-full"
+        } h-full overflow-x-scroll`}
+      >
         <Outlet />
       </div>
     </div>

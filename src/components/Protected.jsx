@@ -9,7 +9,7 @@ const Protected = ({ children }) => {
   if (!isLogin) {
     return (
       <>
-        {toast.error("Need an account for this action!")}
+        {/* {toast.error("Need an account for this action!")} */}
         <Navigate to={"/products"} replace />
       </>
     );
