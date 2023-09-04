@@ -34,9 +34,9 @@ const Aside = ({ isOpened, setIsOpened }) => {
 
   // console.log(location.pathname);
   return (
-    <div className=" w-full h-full bg-white pt-3">
+    <div className=" w-full h-full pt-3">
       <div className="" onClick={() => setIsOpened(!isOpened)}>
-        <RiMenu2Line className=" text-2xl ml-auto mr-5" />
+        <RiMenu2Line className=" text-2xl ml-auto mr-5 click-animation active:scale-90" />
       </div>
 
       <section className="flex flex-col gap-5 px-5 mt-10">

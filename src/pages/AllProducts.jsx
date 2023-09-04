@@ -1,18 +1,34 @@
 // * components
+import { useSelector } from "react-redux";
 import ItemCard from "../components/ItemCard";
+import PaginationBtn from "../components/PaginationBtn";
 import ProductCard from "../components/ProductCard";
 import ProductCardSkeleton from "../components/ProductCardSkeleton";
 
 // * react redux
-import { useGetAllProductsQuery } from "../redux/services/productApi";
+import {
+  useGetAllProductsQuery,
+  useGetProductsByLimitQuery,
+} from "../redux/services/productApi";
 
 // * animation
 import { motion } from "framer-motion";
 
 const AllProducts = () => {
   // * hooks
-  const { data, isLoading, isSuccess } = useGetAllProductsQuery();
-  const products = data?.products;
+  const { data } = useGetAllProductsQuery();
+  const {
+    paginateInfo: { skip, limit },
+  } = useSelector((state) => state.generalSlice);
+  const {
+    data: paginateData,
+    isLoading,
+    isSuccess,
+  } = useGetProductsByLimitQuery({
+    skip,
+    limit,
+  });
+  const products = paginateData?.products;
 
   // * variants
   const cardContainerVariant = {
@@ -65,13 +81,17 @@ const AllProducts = () => {
         <div className="h-[150px] md:h-[300px]  mt-10 w-full skeleton rounded-2xl"></div>
       )}
 
+      <PaginationBtn />
+
       {/* products display  */}
       <div className="my-10 grid grid-cols-2 xs:grid-cols-3 lg:grid-cols-4 gap-x-3 gap-y-6 md:gap-x-10 md:gap-y-16">
-        {!isLoading && isSuccess ? looping : <ProductCardSkeleton />}
+        {!isLoading || isSuccess ? looping : <ProductCardSkeleton />}
       </div>
       {/* <div className=" py-10 flex flex-wrap gap-x-7 gap-y-5 justify-center items-center">
       {!isLoading && isSuccess ? looping2 : <ProductCardSkeleton />}
       </div> */}
+
+      {/* <PaginationBtn /> */}
     </>
   );
 };

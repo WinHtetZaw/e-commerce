@@ -9,7 +9,7 @@ const RootLayout = () => {
   // * hooks
   const location = useLocation();
   return (
-    <div className="h-screen overflow-y-scroll scroll-smooth">
+    <div id="top" className="h-screen overflow-y-scroll scroll-smooth">
       <nav
         className={`${location.pathname === "/" && "hidden"} ${
           location.pathname === "/account/setting" && "min-w-[500px]"

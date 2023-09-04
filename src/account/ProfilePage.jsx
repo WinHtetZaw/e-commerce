@@ -96,8 +96,8 @@ const ProfilePage = () => {
 
   return (
     <>
-      <article className=" flex pt-5 pb-10 h-full bg-white">
-        <div className=" flex flex-col gap-10 px-10 sm:px-16 w-full">
+      <article className=" flex pt-5 pb-10 h-full min-w-[600px]">
+        <div className=" flex flex-col gap-10 w-full">
           <h3 className=" font-bold text-xl">My Profile</h3>
 
           {/* user profile card  */}
@@ -170,7 +170,7 @@ const ProfilePage = () => {
           </section>
 
           {/* address  */}
-          <section className="pb-10 relative shadow-2 w-full p-5 rounded-2xl overflow-hidden">
+          <section className="pb-10 min-w-[300px] relative shadow-2 w-full p-5 rounded-2xl overflow-hidden">
             <div className=" md:w-10/12">
               <h3 className=" mb-5">Address</h3>
 

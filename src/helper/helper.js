@@ -16,3 +16,8 @@ export const setLocalStorage = (text, data) =>
 
 export const getLocalStorage = (text) => JSON.parse(localStorage.getItem(text));
 
+export const setSessionStorage = (text, data) =>
+  sessionStorage.setItem(text, JSON.stringify(data));
+
+export const getSessionStorage = (text) =>
+  JSON.parse(sessionStorage.getItem(text));

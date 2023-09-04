@@ -11,7 +11,7 @@ const AccountLayout = () => {
       <div
         className={`${
           isOpened ? "w-[100px]" : "w-[200px]"
-        } min-h-[85vh] transition-all duration-300`}
+        } min-h-[85vh] transition-all duration-300 bg-white`}
       >
         <Aside isOpened={isOpened} setIsOpened={setIsOpened} />
       </div>
@@ -20,7 +20,7 @@ const AccountLayout = () => {
       <div
         className={`${
           isOpened ? " w-full" : " w-full"
-        } h-full overflow-x-scroll`}
+        } h-full overflow-x-scroll  px-5 py-7 lg:px-10 bg-white`}
       >
         <Outlet />
       </div>

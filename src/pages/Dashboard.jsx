@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 
 const Dashboard = () => {
   return (
-    <div className=" bg-white w-full dbh overflow-x-scroll h-full px-5 py-7">
+    <div className=" min-w-[700px] w-fit h-full">
       {/* top */}
       <section className=" flex items-center justify-between mb-10">
         {/* left  */}
@@ -34,7 +34,7 @@ const Dashboard = () => {
       </section>
 
       {/* cards  */}
-      <section className="grid grid-cols-12 gap-x-5 gap-y-7 mb-16 min-w-[700px]">
+      <section className="grid grid-cols-12 gap-x-5 gap-y-7 mb-16 ">
         {/* first card  */}
         <div className=" card-container">
           <div className="flex bdr-b items-center gap-2 p-3">
@@ -133,12 +133,12 @@ const Dashboard = () => {
       </section>
 
       {/* line chart  */}
-      <section className="flex flex-col md:flex-row md:items-center gap-y-10 mb-16">
+      <section className="flex flex-col lg:flex-row lg:items-center gap-y-10 mb-16">
         <LChart />
         <PChart />
       </section>
 
-      <section className=" min-w-[700px] mb-10">
+      <section className="  mb-10">
         <InvoiceTable />
       </section>
     </div>

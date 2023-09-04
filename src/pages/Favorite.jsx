@@ -96,7 +96,7 @@ const Favorite = () => {
   ));
 
   return (
-    <div className=" w-full min-h-[85vh] bg-white px-5 py-7">
+    <div className=" w-full min-w-[600px] min-h-[85vh]">
       {storedFavorite?.length > 0 ? (
         <div className="">
           {/* head */}
