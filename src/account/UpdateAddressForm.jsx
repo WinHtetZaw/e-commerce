@@ -11,6 +11,7 @@ import {
   formModalParentVariant,
 } from "../helper/animationHelper";
 import { setAddressInfo } from "../redux/features/updateInfoSlice";
+import { Button } from "@nextui-org/react";
 
 const UpdateAddressForm = ({ handleCloseAddressForm }) => {
   const dispatch = useDispatch();
@@ -141,9 +142,9 @@ const UpdateAddressForm = ({ handleCloseAddressForm }) => {
           )}
         </div>
 
-        <button className="mt-3 w-fit uppercase text-sm btn-1 bg-teal-800 text-slate-50 mx-auto click-animation">
+        <Button type="submit" className="mt-3 rounded-full w-fit uppercase text-sm btn-1 bg-teal-800 text-slate-50 mx-auto click-animation">
           Save Changes
-        </button>
+        </Button>
       </motion.form>
       {/* </AnimatePresence> */}
     </motion.div>

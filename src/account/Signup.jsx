@@ -13,6 +13,7 @@ import { toast } from "react-hot-toast";
 // * icons
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { setLocalStorage } from "../helper/helper";
+import { Button } from "@nextui-org/react";
 
 const Signup = () => {
   const [show, setShow] = useState({
@@ -219,9 +220,9 @@ const Signup = () => {
             <span className="flex gap-3 items-center">
               <input
                 {...register("isChecked", { required: true })}
-                className=" accent-teal-800"
+                className=" accent-teal-800 scale-125"
                 type="checkbox"
-                defaultChecked
+                // defaultChecked
               />
               <p className="opacity-80 tracking-wide">
                 I accept the Terms of Use & Privacy Policy
@@ -243,9 +244,9 @@ const Signup = () => {
             </Link>
           </div>
 
-          <button className=" uppercase btn-1 bg-teal-800 w-fit text-slate-50 mx-auto">
+          <Button type="submit" className=" rounded-full uppercase btn-1 bg-teal-800 w-fit text-slate-50 mx-auto">
             Register now
-          </button>
+          </Button>
         </form>
         {/* </div> */}
       </div>

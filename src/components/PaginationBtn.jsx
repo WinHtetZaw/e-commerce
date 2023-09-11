@@ -1,8 +1,8 @@
-import { Pagination } from "@mantine/core";
 import { useDispatch, useSelector } from "react-redux";
 import { setPaginateInfo } from "../redux/features/generalSlice";
 import { useSearchParams } from "react-router-dom";
 import { useEffect } from "react";
+import { Pagination } from "@nextui-org/react";
 
 const PaginationBtn = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -22,9 +22,22 @@ const PaginationBtn = () => {
     setSearchParams({ page: current });
   };
 
+  const customStyles = {
+    // pagination: {
+    //   backgroundColor: '#your-custom-background-color',
+    // },
+    // page: {
+    //   color: '#your-custom-text-color',
+    // },
+    activePage: {
+      backgroundColor: "#fff",
+      color: "#333",
+    },
+  };
+
   return (
     <div className="my-10 mx-auto w-fit bg-teal-">
-      <Pagination
+      {/* <Pagination
         onChange={handlerChangePagination}
         value={activePage}
         total={10}
@@ -39,6 +52,21 @@ const PaginationBtn = () => {
             },
           },
         })}
+      /> */}
+
+      <Pagination
+      classNames={{
+        // wrapper: "gap-0 overflow-visible h-8 rounded border border-divider",
+        // item: "w-8 h-8 text-small rounded-none bg-transparent",
+        cursor:
+          "bg-gradient-to-b shadow-lg from-[#115E59] to-[#115E59] dark:from-default-300 dark:to-default-100 text-white font-bold",
+      }}
+        onChange={handlerChangePagination}
+        page={activePage}
+        color="success"
+        showControls
+        total={10}
+        initialPage={1}
       />
     </div>
   );

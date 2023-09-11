@@ -34,7 +34,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="bg-white px-5 flex items-center sm:justify-between w-full h-20  border-b border-gray-300">
+      <div className="bg-white px-5 flex items-center sm:justify-between w-full h-20  border-b-2 border-gray-300">
         {/* logo  */}
         <Link to={"/products"}>
           <h1 className=" hidden sm:flex items-center gap-1">

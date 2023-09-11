@@ -36,7 +36,7 @@ const Favorite = () => {
     if (storedFavorite) {
       setIsRemoved(false);
     }
-  }, [isRemoved]);
+  }, [isRemoved,storedFavorite]);
 
   // * handles
 

@@ -9,6 +9,7 @@ import {
   formModalChildVariant,
   formModalParentVariant,
 } from "../helper/animationHelper";
+import { Button } from "@nextui-org/react";
 
 const PasswordChangeForm = ({ handlePasswordChangeForm }) => {
   // * hooks
@@ -152,9 +153,11 @@ const PasswordChangeForm = ({ handlePasswordChangeForm }) => {
           )}
         </div>
 
-        <button className="mt-3 w-fit uppercase text-sm btn-1 bg-teal-800 text-slate-50 mx-auto click-animation">
+        <div className="text-sm text-opacity-70 underline">Forgot password</div>
+
+        <Button type="submit" className="mt-3 rounded-full w-fit uppercase text-sm btn-1 bg-teal-800 text-slate-50 mx-auto click-animation">
           Save Changes
-        </button>
+        </Button>
       </motion.form>
       {/* </AnimatePresence> */}
     </motion.div>

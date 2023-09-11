@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 
 const Dashboard = () => {
   return (
-    <div className=" min-w-[700px] w-fit h-full">
+    <div className=" min-w-[700px] w-fll h-full">
       {/* top */}
       <section className=" flex items-center justify-between mb-10">
         {/* left  */}
@@ -26,7 +26,7 @@ const Dashboard = () => {
           <BsBell className=" cursor-pointer active:scale-90" />
           <BsQuestionCircle className=" cursor-pointer active:scale-90" />
           <Link to={"/products"}>
-            <button className="text-sm bdr p-2 rounded-md select-none click-animation shadow-md">
+            <button className="text-sm bdr p-2 rounded-md select-none click-animation">
               View Shop
             </button>
           </Link>

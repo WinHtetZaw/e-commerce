@@ -27,6 +27,8 @@ import { Link, useNavigate } from "react-router-dom";
 import PasswordChangeForm from "./PasswordChangeForm";
 import { addToFavorite } from "../redux/features/favoriteSlice";
 import Swal from "sweetalert2";
+import { Button } from "@nextui-org/react";
+import Editbtn1 from "../components/Editbtn1";
 
 const ProfilePage = () => {
   // * hooks
@@ -160,13 +162,15 @@ const ProfilePage = () => {
                 </span>
               </div>
             </div>
-            <div
+            {/* <div
               onClick={handleCloseUserForm}
               className=" absolute text-opacity-90 bottom-3 sm:bottom-auto right-2 sm:top-5 sm:right-5 flex items-center gap-2 btn-2 border-opacity-40"
             >
               <span className="">Edit</span>
               <BsPencilFill />
-            </div>
+            </div> */}
+            <Editbtn1 handleClick={handleCloseUserForm} />
+
           </section>
 
           {/* address  */}
@@ -200,13 +204,15 @@ const ProfilePage = () => {
                 </span>
               </div>
             </div>
-            <div
+            {/* <Button
               onClick={handleCloseAddressForm}
-              className=" absolute opacity-90 bottom-3 sm:bottom-auto right-2 sm:top-5 sm:right-5 flex items-center gap-2 btn-2 border-opacity-40"
+              variant="ghost"
+              className=" absolute rounded-full opacity-90 bg-transparent bottom-3 sm:bottom-auto right-2 sm:top-5 sm:right-5 flex items-center gap-2 border-opacity-40"
             >
-              <span className="">Edit</span>
+              <span>Edit</span>
               <BsPencilFill />
-            </div>
+            </Button> */}
+            <Editbtn1 handleClick={handleCloseAddressForm} />
           </section>
 
           <section className=" flex flex-col gap-y-3 xs:flex-row items-center xs:justify-between">

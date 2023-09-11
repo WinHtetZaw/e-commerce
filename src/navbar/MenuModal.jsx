@@ -15,6 +15,7 @@ import Search from "./Search";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsLogin } from "../redux/features/generalSlice";
 import { toast } from "react-hot-toast";
+import { motion } from "framer-motion";
 
 const MenuModal = () => {
   // * hooks
@@ -42,7 +43,12 @@ const MenuModal = () => {
         <HiOutlineMenuAlt3 className=" text-2xl" />
       </div>
       {isOpened && (
-        <section className=" sm:hidden">
+        <motion.section
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{duration : 1}}
+          className=" sm:hidden"
+        >
           <div
             onClick={() => setIsOpened(false)}
             className="absolute z-10 inset-0 bg-black bg-opacity-70"
@@ -82,7 +88,7 @@ const MenuModal = () => {
               <Search setIsOpened={setIsOpened} isOpened={isOpened} />
             </div>
           </div>
-        </section>
+        </motion.section>
       )}
     </>
   );

@@ -14,7 +14,8 @@ const Breadcrumb = () => {
 
   return (
     <>
-      <section className=" flex border-b border-gray-300 p-3">
+      <section className=" flex border-b-2 border-gray-300 p-3">
+      {/* <section className=" flex shadow p-3"> */}
         {breadcrumbs.map((el, index) => {
           const breadcrumb = el.breadcrumb.props.children;
           const link = el.key;

@@ -19,6 +19,7 @@ import { UAI, setUaiToStorage, setLocalStorage, getLocalStorage } from "../helpe
 
 // * icons
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
+import { Button } from "@nextui-org/react";
 
 const Signin = () => {
   // * hooks
@@ -151,9 +152,9 @@ const Signin = () => {
             {/* </Link> */}
           </section>
 
-          <button className=" w-[10rem] uppercase btn-1 bg-teal-800 text-slate-50 mx-auto">
+          <Button type="submit" className=" rounded-full w-[10rem] uppercase btn-1 bg-teal-800 text-slate-50 mx-auto">
             Log in
-          </button>
+          </Button>
         </form>
       </div>
     </>
