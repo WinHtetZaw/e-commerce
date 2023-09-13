@@ -19,6 +19,7 @@ import BackBtn from "../components/BackBtn";
 import AddNewBtn from "../components/AddNewBtn";
 import RemoveAllBtn from "../components/RemoveAllBtn";
 import EmptyCart from "../components/EmptyCart";
+import { Button } from "@nextui-org/react";
 
 const Cart = () => {
   const { cartProducts, currentItemInfo, totalPrice } = useSelector(
