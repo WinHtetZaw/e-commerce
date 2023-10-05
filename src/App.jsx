@@ -12,38 +12,39 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 import RootLayout from "./layouts/RootLayout";
-import NotFound from "./pages/NotFound";
-import AllProducts from "./pages/AllProducts";
 import ProductLayout from "./layouts/ProductLayout";
-import ProductDetail from "./pages/ProductDetail";
-import FilterCategory from "./pages/FilterCategory";
-import Checkout from "./pages/Checkout";
-import Cart from "./pages/Cart";
 import CartLayout from "./layouts/CartLayout";
-import SearchPage from "./pages/SearchPage";
 import AccountLayout from "./layouts/AccountLayout";
-import ProfilePage from "./account/ProfilePage";
-import Home from "./pages/Home";
-import Dashboard from "./pages/Dashboard";
-import Favorite from "./pages/Favorite";
 import AccSettingLayout from "./layouts/AccSettingLayout";
-import Signup from "./account/Signup";
-import Signin from "./account/Signin";
 import ForgotPw from "./account/ForgotPw";
 import ProductDetailLayout from "./layouts/ProductDetailLayout";
 import CategoryLayout from "./layouts/CategoryLayout";
 import Protected from "./components/Protected";
+import { Suspense, lazy } from "react";
+
+const Signup = lazy(() => import("./account/Signup"));
+const Signin = lazy(() => import("./account/Signin"));
+const Home = lazy(() => import("./pages/Home"));
+const AllProducts = lazy(() => import("./pages/AllProducts"));
+const ProductDetail = lazy(() => import("./pages/ProductDetail"));
+const Cart = lazy(() => import("./pages/Cart"));
+const SearchPage = lazy(() => import("./pages/SearchPage"));
+const Checkout = lazy(() => import("./pages/Checkout"));
+const Dashboard = lazy(() => import("./pages/Dashboard"));
+const Favorite = lazy(() => import("./pages/Favorite"));
+const FilterCategory = lazy(() => import("./pages/FilterCategory"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const ProfilePage = lazy(() => import("./account/ProfilePage"));
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="register" element={<Signup />} />
       <Route path="log-in" element={<Signin />} />
-      <Route path="password-recovery" element={<ForgotPw />} />
+      {/* <Route path="password-recovery" element={<ForgotPw />} /> */}
 
       <Route path="/" element={<RootLayout />} errorElement={<NotFound />}>
         <Route index element={<Home />} />
-
         <Route
           path="account"
           element={
@@ -90,29 +91,11 @@ const App = () => {
   return (
     <>
       <div>
-        <Toaster
-          position="top-right"
-          // toastOptions={{
-          //   // Define default options
-          //   className: "",
-          //   duration: 1000,
-          //   // style: {
-          //   //   background: "#363636",
-          //   //   color: "#fff",
-          //   // },
-
-          //   // Default options for specific types
-          //   success: {
-          //     duration: 1000,
-          //     // theme: {
-          //     //   primary: "green",
-          //     //   secondary: "black",
-          //     // },
-          //   },
-          // }}
-        />
+        <Toaster position="top-right" />
       </div>
-      <RouterProvider router={router} />
+      <Suspense>
+        <RouterProvider router={router} />
+      </Suspense>
     </>
   );
 };

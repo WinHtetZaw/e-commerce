@@ -3,7 +3,7 @@ import { GiShoppingCart } from "react-icons/gi";
 import { FiShoppingCart } from "react-icons/fi";
 
 // * react router dom
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 // * react redux
 import { useSelector } from "react-redux";
@@ -17,6 +17,7 @@ import MenuModal from "./MenuModal";
 
 // * alert notification
 import { toast } from "react-hot-toast";
+import { useEffect } from "react";
 
 const Navbar = () => {
   const { isLogin } = useSelector((state) => state.generalSlice);
@@ -37,7 +38,7 @@ const Navbar = () => {
       <div className="bg-white px-5 flex items-center sm:justify-between w-full h-20">
         {/* logo  */}
         <Link to={"/products"}>
-          <h1 className=" hidden sm:flex items-center gap-1">
+          <h1 className="hidden sm:flex items-center gap-1">
             <GiShoppingCart className=" text-xl md:text-3xl" />
             <span className=" heading-1">Shopcart</span>
           </h1>

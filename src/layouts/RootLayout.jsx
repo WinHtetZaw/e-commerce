@@ -4,6 +4,7 @@ import { Outlet, useLocation } from "react-router-dom";
 // * components
 import Navbar from "../navbar/Navbar";
 import Foot from "../components/Foot";
+import { Suspense } from "react";
 
 const RootLayout = () => {
   // * hooks
@@ -19,7 +20,7 @@ const RootLayout = () => {
       </nav>
       {/* <main className=" min-h-[55vh] px-3 md:px-10"> */}
       <main className="min-h-[70vh]">
-        <Outlet />
+          <Outlet />
       </main>
       <footer
         className={`${location.pathname === "/" && "hidden"} ${

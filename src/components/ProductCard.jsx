@@ -22,6 +22,7 @@ import {
 // * alert notification
 import { toast } from "react-hot-toast";
 import { motion } from "framer-motion";
+import { Image } from "@nextui-org/react";
 
 const ProductCard = (props) => {
   const { id, title, thumbnail, description, category, rating, price } = props;

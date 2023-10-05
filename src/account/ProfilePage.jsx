@@ -1,9 +1,7 @@
 // * react
-import { useState } from "react";
+import { lazy, useState } from "react";
 
 // * icons
-import { BsPencilFill } from "react-icons/bs";
-import { IoIosLogOut } from "react-icons/io";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { GoTrash } from "react-icons/go";
 
@@ -14,21 +12,22 @@ import { useDispatch, useSelector } from "react-redux";
 import { AnimatePresence } from "framer-motion";
 
 // * alert
-import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 
 // * components
-import UpdateUserInfoForm from "./UpdateUserInfoForm";
-import UpdateAddressForm from "./UpdateAddressForm";
+// import UpdateUserInfoForm from "./UpdateUserInfoForm";
+// import UpdateAddressForm from "./UpdateAddressForm";
 import { setIsLogin } from "../redux/features/generalSlice";
 import { setUaiToStorage, shopcartUai } from "../helper/helper";
-import { toast } from "react-hot-toast";
-import { Link, useNavigate } from "react-router-dom";
-import PasswordChangeForm from "./PasswordChangeForm";
-import { addToFavorite } from "../redux/features/favoriteSlice";
+import { useNavigate } from "react-router-dom";
+// import PasswordChangeForm from "./PasswordChangeForm";
 import Swal from "sweetalert2";
 import { Button } from "@nextui-org/react";
 import Editbtn1 from "../components/Editbtn1";
+
+const PasswordChangeForm = lazy(() => import("./PasswordChangeForm"));
+const UpdateUserInfoForm = lazy(() => import("./UpdateUserInfoForm"));
+const UpdateAddressForm = lazy(() => import("./UpdateAddressForm"));
 
 const ProfilePage = () => {
   // * hooks
@@ -170,7 +169,6 @@ const ProfilePage = () => {
               <BsPencilFill />
             </div> */}
             <Editbtn1 handleClick={handleCloseUserForm} />
-
           </section>
 
           {/* address  */}
