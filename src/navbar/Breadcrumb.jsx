@@ -8,9 +8,9 @@ const Breadcrumb = () => {
 
   const lists = breadcrumbs?.map((el) => el.breadcrumb.props.children);
 
-  if (location.pathname === "/") {
-    return <></>;
-  }
+  // if (location.pathname === "/") {
+  //   return <></>;
+  // }
 
   return (
     <>

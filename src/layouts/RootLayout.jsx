@@ -11,8 +11,13 @@ const RootLayout = () => {
   const location = useLocation();
   return (
     <div id="top" className="h-screen overflow-y-scroll scroll-smooth">
-      <nav
+      {/* <nav
         className={`${location.pathname === "/" && "hidden"} ${
+          location.pathname === "/account/setting" && "min-w-[500px]"
+        }`}
+      > */}
+      <nav
+        className={` ${
           location.pathname === "/account/setting" && "min-w-[500px]"
         }`}
       >
@@ -20,10 +25,10 @@ const RootLayout = () => {
       </nav>
       {/* <main className=" min-h-[55vh] px-3 md:px-10"> */}
       <main className="min-h-[70vh]">
-          <Outlet />
+        <Outlet />
       </main>
       <footer
-        className={`${location.pathname === "/" && "hidden"} ${
+        className={` ${
           location.pathname === "/account/setting" && "min-w-[500px]"
         }`}
       >

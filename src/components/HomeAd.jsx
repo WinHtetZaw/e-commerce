@@ -1,5 +1,6 @@
 import { Button } from "@nextui-org/react";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const HomeAd = () => {
   return (
@@ -27,9 +28,11 @@ const HomeAd = () => {
       <h2 className=" tracking-wider  text-teal-800 text-[1.125rem] md:text-[1.875rem] md:lh-3 lh-1 font-2 font-bold capitalize w-full md:w-1/2 lg:w-1/3">
         Grab upto 50% off on selected headphone
       </h2>
-      <Button className="md:mt-10 mt-5 py-1 px-3 rounded-full md:btn-1 w-[10rem] capitalize text-white bg-teal-800 click-animation">
-        buy now
-      </Button>
+      <Link to={'/products'}>
+        <Button className="md:mt-10 mt-5 py-1 px-3 rounded-full md:btn-1 w-[10rem] capitalize text-white bg-teal-800 click-animation">
+          buy now
+        </Button>
+      </Link>
     </div>
   );
 };

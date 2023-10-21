@@ -4,7 +4,7 @@ import ItemCard from "../components/ItemCard";
 
 const ProductLayout = () => {
   return (
-    <div className="px-7 md:px-10">
+    <div className="px-3 md:px-10">
       {/* <ItemCard/> */}
       <Outlet />
     </div>

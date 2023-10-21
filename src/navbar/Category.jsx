@@ -38,11 +38,14 @@ const Category = () => {
         <AnimatePresence>
           {isOpen && !isLoading && isSuccess && (
             <motion.ul
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="dropdown-area-1 top-10 font-1 left-0 xs:right-0 h-[50vh] overflow-y-scroll"
+              initial={{ opacity: 0, scale: 0.2 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.2 }}
+              transition={{
+                duration: 0.2,
+              }}
+              
+              className="dropdown-area-1 top-10 sm:-left-10 left-0 font-1  h-[50vh] overflow-y-scroll"
             >
               <li className=" text-sm opacity-50 text-center font-bold">
                 Category List

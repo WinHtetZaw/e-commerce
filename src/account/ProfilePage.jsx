@@ -15,8 +15,8 @@ import { AnimatePresence } from "framer-motion";
 import "react-confirm-alert/src/react-confirm-alert.css";
 
 // * components
-// import UpdateUserInfoForm from "./UpdateUserInfoForm";
-// import UpdateAddressForm from "./UpdateAddressForm";
+import UpdateUserInfoForm from "./UpdateUserInfoForm";
+import UpdateAddressForm from "./UpdateAddressForm";
 import { setIsLogin } from "../redux/features/generalSlice";
 import { setUaiToStorage, shopcartUai } from "../helper/helper";
 import { useNavigate } from "react-router-dom";
@@ -26,8 +26,8 @@ import { Button } from "@nextui-org/react";
 import Editbtn1 from "../components/Editbtn1";
 
 const PasswordChangeForm = lazy(() => import("./PasswordChangeForm"));
-const UpdateUserInfoForm = lazy(() => import("./UpdateUserInfoForm"));
-const UpdateAddressForm = lazy(() => import("./UpdateAddressForm"));
+// const UpdateUserInfoForm = lazy(() => import("./UpdateUserInfoForm"));
+// const UpdateAddressForm = lazy(() => import("./UpdateAddressForm"));
 
 const ProfilePage = () => {
   // * hooks
