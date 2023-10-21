@@ -29,9 +29,9 @@ const HomeAd = () => {
         Grab upto 50% off on selected headphone
       </h2>
       <Link to={'/products'}>
-        <Button className="md:mt-10 mt-5 py-1 px-3 rounded-full md:btn-1 w-[10rem] capitalize text-white bg-teal-800 click-animation">
+        <div className="md:mt-10 mt-5 text-center py-1 px-3 rounded-full md:btn-1 w-[10rem] capitalize text-white bg-teal-800 click-animation">
           buy now
-        </Button>
+        </div>
       </Link>
     </div>
   );

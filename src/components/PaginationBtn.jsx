@@ -14,7 +14,8 @@ const PaginationBtn = () => {
   useEffect(() => {
     setSearchParams({ page: activePage });
   }, [setSearchParams, activePage]);
-
+  
+  // console.log(searchParams.get("page"))
   // * handles
   const handlerChangePagination = (current, skip) => {
     skip = (current - 1) * 10;
